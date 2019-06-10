@@ -13,12 +13,13 @@ Spring Initilizrで下記4つを有効にして作成
  - postgresql
  - lombok
 
-application.propetiesに追記
+application.propetiesに追記  
+※リポジトリではapplication.properties.envとして保持
 ```
 spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://{接続情報}
-spring.datasource.username=hogehoge
-spring.datasource.password=fugafuga
+spring.datasource.url=jdbc:postgresql://{host}:{port}/{dbName}
+spring.datasource.username={userId}
+spring.datasource.password={password}
 ```
 
 Spring Boot起動時に下記のエラーが出た
