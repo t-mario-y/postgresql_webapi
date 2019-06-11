@@ -29,4 +29,4 @@ HELP.md
 .vscode/
 
 ### リモートPostgreSQLへの接続情報
-src/main/resources/application.properties
+src/main/resources/application.yml
