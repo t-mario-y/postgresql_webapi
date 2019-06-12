@@ -30,7 +30,12 @@ public class PersonController {
     return service.updateRecord(param);
   }
   @RequestMapping(value="/create", method=RequestMethod.POST)
-  public Person create(@RequestBody Person param) {
+  public String create(@RequestBody Person param) {
     return service.createRecord(param);
+  }
+  @RequestMapping(value="/delete/{id}", method=RequestMethod.DELETE)
+  public String delete(@PathVariable("id") Long id){
+    service.deleteRecord(id);
+    return "delete success.";
   }
 }

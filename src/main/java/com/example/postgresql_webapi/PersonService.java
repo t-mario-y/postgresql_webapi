@@ -7,40 +7,45 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PersonService {
   @Autowired
   PersonRepository repository;
+  @Autowired
+  JdbcTemplate jdbcTemplate;
 
   public List<Person> findAll() {
     // ID順にソートして返す TODO コピペなので理解しきってない
-    return ((List<Person>) repository.findAll()).stream()
-      .sorted(Comparator.comparing(Person::getId))
-      .collect(Collectors.toList());
+    return ((List<Person>) repository.findAll()).stream().sorted(Comparator.comparing(Person::getId))
+        .collect(Collectors.toList());
   }
-  public Optional<Person> findById(Long id){
+
+  public Optional<Person> findById(Long id) {
     return repository.findById(id);
   }
-  public Person updateRecord(Person person){
+
+  public Person updateRecord(Person person) {
     return repository.save(person);
   }
 
-  @Transactional
-  public Person createRecord(Person _person){
-/*
-    Person newPerson = new Person();
-    newPerson.setAge(11);
-    newPerson.setId(Long.valueOf(13));
-    newPerson.setName("新渡戸稲造");
-*/
-    NamedParameterJdbcTemplate jdbcTemplate;
-//    template.setDataSource(org.postgresql.Driver.class);
-    return _person;
+  public String createRecord(Person _person) {
+    //TODO IDはフロントエンド側は知らないので不親切
+    if(repository.existsById(_person.getId())){
+      //failedなのにHTTPは200が帰るのはおかしい
+      return "failed: duplicate id record exists.";
+    }
+    int result = jdbcTemplate.update(
+      new StringBuilder( "INSERT INTO person VALUES (")
+      .append(_person.getId()).append(", '")
+      .append(_person.getName()).append("', ")
+      .append(_person.getAge()).append(")")
+      .toString()
+    );
+    return "create succeed";
   }
+
   public String deleteRecord(Long id){
     if(!repository.existsById(id)){
       return "delete faild:no such record.";
