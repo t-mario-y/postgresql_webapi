@@ -22,6 +22,8 @@ spring.datasource.username={userId}
 spring.datasource.password={password}
 ```
 
+以下の内容はJPAなので、Spring Data Jdbcに移行後は不要  
+
 Spring Boot起動時に下記のエラーが出た
 ```
 java.sql.SQLFeatureNotSupportedException: org.postgresql.jdbc.PgConnection.createClob() メソッドはまだ実装されていません。
