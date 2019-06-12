@@ -1,47 +1,21 @@
 package com.example.postgresql_webapi;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-@Table(name = "person")
-@Data
+@Table(value = "person")
 public class Person {
 
   @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Integer id;
+  @Getter @Setter
+  private Long id;
 
-  @Column(name="name")
+  @Getter @Setter
   private String name;
 
-  @Column(name="age")
+  @Getter @Setter
   private Integer age;
-
-  // TODO:アクセサを手で書かないと、データ送り出し時に価がセットされない(DB接続は成功している)
-  public Integer getId() {
-    return id;
-  }
-  public void setId(Integer id) {
-    this.id = id;
-  }
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-  public int getAge() {
-    return age;
-  }
-  public void setAge(int age) {
-    this.age = age;
-  }
-
 }
