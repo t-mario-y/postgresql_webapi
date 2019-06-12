@@ -1,0 +1,23 @@
+### 全件取得
+GET http://localhost:3000/person/findAll
+### 1件取得
+GET http://localhost:3000/person/findById/2
+### 1件更新
+PATCH http://localhost:3000/person/update
+content-type: application/json
+
+{
+  "id": 2,
+  "name": "喜多川歌麿",
+  "age": 76
+}
+### 1件作成
+POST http://localhost:3000/person/create
+content-type: application/json
+
+{
+  "id": 99,
+  "name": "おそ松くん",
+  "age": 23
+}
+###
