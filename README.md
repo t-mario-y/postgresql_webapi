@@ -13,15 +13,6 @@ Spring Initilizrで下記4つを有効にして作成
  - postgresql
  - lombok
 
-application.propetiesに追記  
-※リポジトリではapplication.properties.envとして保持
-```
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://{host}:{port}/{dbName}
-spring.datasource.username={userId}
-spring.datasource.password={password}
-```
-
 以下の内容はJPAなので、Spring Data Jdbcに移行後は不要  
 
 Spring Boot起動時に下記のエラーが出た
