@@ -1,17 +1,17 @@
 ### 全件取得
-GET http://localhost:3000/person
+GET http://localhost:3000/persons
 ### 1件取得
-GET http://localhost:3000/person/4
+GET http://localhost:3000/persons/4
 ### 1件更新
-PATCH http://localhost:3000/person/3
+PATCH http://localhost:3000/persons/6
 content-type: application/json
 
 {
-  "name": "大魔王ゾーマ",
-  "age": 34
+  "name": "チョコラブ",
+  "age": 14
 }
 ### 1件作成
-POST http://localhost:3000/person
+POST http://localhost:3000/persons
 content-type: application/json
 
 {
@@ -19,5 +19,5 @@ content-type: application/json
   "age": 12
 }
 ### 1件削除
-DELETE http://localhost:3000/person/4
+DELETE http://localhost:3000/persons/6
 
