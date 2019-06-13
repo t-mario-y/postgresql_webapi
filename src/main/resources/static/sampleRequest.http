@@ -1,25 +1,23 @@
 ### 全件取得
-GET http://localhost:3000/person/findAll
+GET http://localhost:3000/person
 ### 1件取得
-GET http://localhost:3000/person/findById/4
+GET http://localhost:3000/person/4
 ### 1件更新
-PATCH http://localhost:3000/person/update
+PATCH http://localhost:3000/person/3
 content-type: application/json
 
 {
-  "id": 3,
-  "name": "勇者ロト",
-  "age": 15
+  "name": "大魔王ゾーマ",
+  "age": 34
 }
 ### 1件作成
-POST http://localhost:3000/person/create
+POST http://localhost:3000/person
 content-type: application/json
 
 {
-  "id": 4,
   "name": "風来のシレン",
   "age": 12
 }
 ### 1件削除
-DELETE http://localhost:3000/person/delete/4
+DELETE http://localhost:3000/person/4
 
