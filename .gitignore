@@ -28,5 +28,7 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-### リモートPostgreSQLへの接続情報
+### DBへの接続情報(Oracle/PostgreSQL)
 src/main/resources/application.yml
+src/main/resources/application.postgresql.yml
+src/main/resources/application.seisenmd.yml
