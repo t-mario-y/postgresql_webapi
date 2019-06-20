@@ -8,5 +8,18 @@
 </head>
 <body>
   <h1>Spring Boot app is running.</h1>
+  <p>index.html を /resources/staticに入れると、特にMappingなしでもApp起動時に読んでくれます</p>
+  <p>他のページを表示させたいときは、下記のように追記します。</p>
+  <pre>
+    <code>
+      @Controller
+      public class PageController{
+        @GetMapping("/hello")
+        public String hello() {
+          return "hello.html";
+        }
+      }
+    </code>
+  </pre>
 </body>
 </html>

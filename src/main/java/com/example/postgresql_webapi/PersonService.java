@@ -22,15 +22,22 @@ public class PersonService {
 
   public List<Person> findAll() {
     // ID順にソートして返す TODO コピペなので理解しきってない
-    return ((List<Person>) repository.findAll()).stream().sorted(Comparator.comparing(Person::getId))
-        .collect(Collectors.toList());
+    return ((List<Person>) repository.findAll()).stream()
+      .sorted(Comparator.comparing(Person::getId))
+      .collect(Collectors.toList());
   }
 
+  //IDを指定して検索
   public Optional<Person> findById(Long id) {
+    //idが不正の場合は空文字列ではなく"null"という文字列が帰る
+    //TODO Web APIとしてはちょっと不親切
     return repository.findById(id);
   }
 
+  //既存レコードの更新
   public Person updateRecord(Person person) {
+    //TODO 更新が成功したら成功後のレコードをJSONで返し、失敗したらエラーを返したい(200ではない)
+    //ハンドリングが雑。
     return repository.save(person);
   }
 
@@ -58,9 +65,9 @@ public class PersonService {
 
   public String deleteRecord(Long id){
     if(!repository.existsById(id)){
-      return "delete faild:no such record.";
+      return "delete failed:no such record.";
     }
     repository.deleteById(id);
-    return "delete succeed";
+    return "delete succeeded";
   }
 }
